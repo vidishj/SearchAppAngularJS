@@ -1,0 +1,22 @@
+[
+    {
+      "flightid": "AI-101",
+      "source": "MEL",
+      "destination": "SYD",
+      "departtime": "10:00AM",
+      "arrivaltime": "11.30AM",
+      "company": "Jetstar",
+      "price": 100
+    },
+    {
+      "flightid": "AI-102",
+      "source": "MEL",
+      "destination": "PER",
+      "departtime": "11:00AM",
+      "arrivaltime": "12.30AM",
+      "company": "Quantas",
+      "price": 150
+    }
+    
+    
+]

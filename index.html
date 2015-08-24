@@ -1,0 +1,117 @@
+
+<!doctype html>
+<html ng-app="flightSearch">
+<head>
+    <meta charset="UTF-8">
+    <title>Flight Search</title>
+    
+    <script type="text/javascript" src="Scripts/bootstrap.min.js"></script>
+    <script type="text/javascript" src="Scripts/bootstrap.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    
+    <script src="Scripts/controller.js"></script>
+    
+    <link rel="stylesheet" href="Styles/bootstrap.min.css">
+    <link rel="stylesheet" href="Styles/bootstrap.css">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    
+    <script>
+    $(function() {
+        $( "#flight-search" ).slider({
+            range: true,
+            min: 50,
+            max: 200,
+            values: [ 50, 200 ],
+            slide: function( event, ui ) {
+                $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
+            }
+        });
+        $( "#amount" ).val( "$" + $( "#flight-search" ).slider( "values", 0 ) +
+                           " - $" + $( "#flight-search" ).slider( "values", 1 ) );
+    });
+  </script>
+    
+    
+</head>
+<body ng-controller="flightList">
+    <header class="container">
+        <div class="jumbotron">
+            <h2>Flight Search Engine</h2>
+        </div>
+    </header>
+    <div class="container">
+       
+        <div class="row">
+            <div class="col-md-4">
+                <label>From</label>
+                <select class="form-control" name="source" ng-model="from">
+                    <option>Please Select</option>
+                    <option value="MEL">Melbourne</option>
+                    <option value="SYD">Sydney</option>
+                    <option value="BRS">Brisbane</option>
+                </select>
+                <label>Destination</label>
+                <select class="form-control" name="destination" ng-model="destination">
+                    <option>Please Select</option>
+                    <option value="MEL">Melbourne</option>
+                    <option value="SYD">Sydney</option>
+                    <option value="PER">Perth</option>
+                </select>
+                <label>Departure Date</label>
+                <input class="form-control" type="text" name="destination" />
+                <label>Return Date</label>
+                <input class="form-control" type="text" name="destination" />
+                <label>Passengers</label>
+                <input class="form-control" type="text" name="destination" />
+                <br>
+                <input class="form-control" type="submit" ng-click="addToList();" value="Search" />
+                
+                <br>
+                <div style="border:1px solid #000; padding: 10px;">
+                    <label>Refine Flight Search</label>
+                    <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
+                    <div id="flight-search"></div>
+                </div> 
+            </div>
+            
+            <div class="col-md-8">
+                <div class="row">
+                    <div class="col-md-8">
+                        <h4>Your Results</h4>
+                    </div>
+                    <div class="col-md-4">
+                        <p>Depart:</p>
+                        <p>Return:</p>
+                    </div>
+                    
+                </div>
+                
+                <div id="flight-results" class="row bg-primary" ng-repeat="flight in list">
+                    <div class="col-sm-5">
+                        <label>Flight No: {{flight.flightid}}</label>
+                        <p>{{flight.source}} > {{flight.destination}}</p>
+                    </div>
+                    <div class="col-sm-2">
+                        <p>Depart: {{flight.departtime}}</p>
+                        <p>Arrive: {{flight.arrivaltime}}</p>
+                    </div>
+                    <div class="col-sm-5">
+                        <p>AUD {{flight.price}}</p>
+                        
+                    </div>
+                </div>
+                
+                
+                
+            </div>
+        </div>
+        
+        
+    </div>
+
+</body>
+</html>
