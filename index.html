@@ -10,9 +10,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-    
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
     <script src="Scripts/controller.js"></script>
     
     <link rel="stylesheet" href="Styles/bootstrap.min.css">
@@ -33,6 +32,14 @@
         $( "#amount" ).val( "$" + $( "#flight-search" ).slider( "values", 0 ) +
                            " - $" + $( "#flight-search" ).slider( "values", 1 ) );
     });
+        
+    $(function() {
+    $( "#departuredate" ).datepicker();
+  });
+    
+    $(function() {
+    $( "#returndate" ).datepicker();
+  });
   </script>
     
     
@@ -53,6 +60,8 @@
                     <option value="MEL">Melbourne</option>
                     <option value="SYD">Sydney</option>
                     <option value="BRS">Brisbane</option>
+                    <option value="ADL">Adelaide</option>
+                    
                 </select>
                 <label>Destination</label>
                 <select class="form-control" name="destination" ng-model="destination">
@@ -62,9 +71,9 @@
                     <option value="PER">Perth</option>
                 </select>
                 <label>Departure Date</label>
-                <input class="form-control" type="text" name="destination" />
+                <input class="form-control" type="text" id="departuredate" ng-model="departuredate"/>
                 <label>Return Date</label>
-                <input class="form-control" type="text" name="destination" />
+                <input class="form-control" type="text" id="returndate" />
                 <label>Passengers</label>
                 <input class="form-control" type="text" name="destination" />
                 <br>

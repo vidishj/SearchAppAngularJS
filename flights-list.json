@@ -6,7 +6,8 @@
       "departtime": "10:00AM",
       "arrivaltime": "11.30AM",
       "company": "Jetstar",
-      "price": 100
+      "price": 100,
+      "departdate": "08/15/2015"
     },
     {
       "flightid": "AI-102",
@@ -15,7 +16,8 @@
       "departtime": "11:00AM",
       "arrivaltime": "12.30AM",
       "company": "Quantas",
-      "price": 150
+      "price": 150,
+      "departdate": "08/16/2015"
     }
     
     

@@ -8,12 +8,12 @@ flightsearch.controller('flightList', function ($scope, $http) {
      
             $scope.list = [];
             angular.forEach($scope.flights, function(value,index){
-                if(value.source == $scope.from && value.destination == $scope.destination)
+                if(value.source == $scope.from && value.destination == $scope.destination && value.departdate == $("#departuredate").datepicker.parseDate("yy-mm-dd", "2007-01-26")
                 {   
                     $scope.list.push(value);
-                    //alert(value.price);
+                    alert(value);
                 }
-                
+                alert($("#departuredate").datepicker("getDate") + value.departdate);
             });
             return $scope.list;           
         };
