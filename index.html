@@ -55,7 +55,7 @@
         <div class="row">
             <div class="col-md-4">
                 <label>From</label>
-                <select class="form-control" name="source" ng-model="from">
+                <select class="form-control" name="source" id="source" ng-model="from">
                     <option>Please Select</option>
                     <option value="MEL">Melbourne</option>
                     <option value="SYD">Sydney</option>
@@ -99,7 +99,7 @@
                     
                 </div>
                 
-                <div id="flight-results" class="row bg-primary" ng-repeat="flight in list">
+                <div id="flight-results" class="row bg-primary" ng-repeat="flight in flights">
                     <div class="col-sm-5">
                         <label>Flight No: {{flight.flightid}}</label>
                         <p>{{flight.source}} > {{flight.destination}}</p>
