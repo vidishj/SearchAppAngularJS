@@ -4,8 +4,7 @@ var flights;
 
 
 flightsearch.controller('flightList', ['$scope', '$http', 'flightSearchService', function ($scope, $http, flightSearchService) {
-        $scope.addToList = function(data) {
-            alert("I am in addToList");
+        $scope.searchFlights = function(data) {
             $scope.flights = flightSearchService.getFlights();
         }
         //$scope.addToList = function (data) {
@@ -30,28 +29,27 @@ flightsearch.controller('flightList', ['$scope', '$http', 'flightSearchService',
 flightsearch.factory('flightSearchService', function($http){
     $http.get('flights-list.json').success(function (data) {
         flights = data;
-        alert(data);
+        
     });
-   
    
     return {
-        
-         
         getFlights : function(){
+        var sourcecity = document.getElementById("source").value;
+        var destinationcity = document.getElementById("destination").value;
+        
+        
             
-    var list = [];
-          
-            alert(flights);
-    angular.forEach(flights, function(value, index){
-        if (value.source == "MEL")
-        {
-            list.push(value);
-            alert("I am just returning the flight list");
-        }
-    });
+        var list = [];
+        
+        angular.forEach(flights, function(value, index){
+            if (value.source == sourcecity && value.destination == destinationcity && value.departdate == $("#departuredate").datepicker({ dateFormat: 'dd,MM,yyyy' }).val() && value.returndate == $("#returndate").datepicker({ dateFormat: 'dd,MM,yyyy' }).val() )
+            {
+                list.push(value);
+                
+            }
             
-            
+        });
     return list;
-}
+        }
     };
 });

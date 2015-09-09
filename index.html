@@ -19,26 +19,15 @@
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
     
     <script>
-    $(function() {
-        $( "#flight-search" ).slider({
-            range: true,
-            min: 50,
-            max: 200,
-            values: [ 50, 200 ],
-            slide: function( event, ui ) {
-                $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
-            }
-        });
-        $( "#amount" ).val( "$" + $( "#flight-search" ).slider( "values", 0 ) +
-                           " - $" + $( "#flight-search" ).slider( "values", 1 ) );
-    });
+    
         
     $(function() {
     $( "#departuredate" ).datepicker();
+    $( "#returndate" ).datepicker();
   });
     
     $(function() {
-    $( "#returndate" ).datepicker();
+    
   });
   </script>
     
@@ -64,7 +53,7 @@
                     
                 </select>
                 <label>Destination</label>
-                <select class="form-control" name="destination" ng-model="destination">
+                <select class="form-control" name="destination" id="destination" ng-model="destination">
                     <option>Please Select</option>
                     <option value="MEL">Melbourne</option>
                     <option value="SYD">Sydney</option>
@@ -77,14 +66,10 @@
                 <label>Passengers</label>
                 <input class="form-control" type="text" name="destination" />
                 <br>
-                <input class="form-control" type="submit" ng-click="addToList();" value="Search" />
+                <input class="form-control" type="submit" ng-click="searchFlights();" value="Search" />
                 
                 <br>
-                <div style="border:1px solid #000; padding: 10px;">
-                    <label>Refine Flight Search</label>
-                    <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
-                    <div id="flight-search"></div>
-                </div> 
+                
             </div>
             
             <div class="col-md-8">
@@ -92,10 +77,7 @@
                     <div class="col-md-8">
                         <h4>Your Results</h4>
                     </div>
-                    <div class="col-md-4">
-                        <p>Depart:</p>
-                        <p>Return:</p>
-                    </div>
+                    
                     
                 </div>
                 
@@ -103,6 +85,7 @@
                     <div class="col-sm-5">
                         <label>Flight No: {{flight.flightid}}</label>
                         <p>{{flight.source}} > {{flight.destination}}</p>
+                        
                     </div>
                     <div class="col-sm-2">
                         <p>Depart: {{flight.departtime}}</p>
@@ -112,8 +95,9 @@
                         <p>AUD {{flight.price}}</p>
                         
                     </div>
+                  
                 </div>
-                
+                <div class="alert alert-warning" ng-show="!flights.length">Sorry, no flights available!</div>  
                 
                 
             </div>
