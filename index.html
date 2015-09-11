@@ -3,7 +3,7 @@
 <html ng-app="flightSearch">
 <head>
     <meta charset="UTF-8">
-    <title>Flight Search</title>
+    <title>Flight Search Engine</title>
     
     <script type="text/javascript" src="Scripts/bootstrap.min.js"></script>
     <script type="text/javascript" src="Scripts/bootstrap.js"></script>
@@ -19,17 +19,20 @@
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
     
     <script>
-    
+        $(function() {
+            $( "#departuredate" ).datepicker();
+            $( "#returndate" ).datepicker();
+        });
         
-    $(function() {
-    $( "#departuredate" ).datepicker();
-    $( "#returndate" ).datepicker();
-  });
-    
-    $(function() {
-    
-  });
-  </script>
+        function clearFields() {
+            document.getElementById("departuredate").value = "";
+            document.getElementById("returndate").value = "";
+            document.getElementById("passengers").value = "";
+            document.getElementById("source").selectedIndex = 0;
+            document.getElementById("destination").selectedIndex = 0;
+           
+        }
+    </script>
     
     
 </head>
@@ -41,11 +44,11 @@
     </header>
     <div class="container">
        
-        <div class="row">
-            <div class="col-md-4">
+        
+            <div class="col-md-3" style="background-color: #e9e9e9;">
                 <label>From</label>
                 <select class="form-control" name="source" id="source" ng-model="from">
-                    <option>Please Select</option>
+                    <option value="">Please Select</option>
                     <option value="MEL">Melbourne</option>
                     <option value="SYD">Sydney</option>
                     <option value="BRS">Brisbane</option>
@@ -54,7 +57,7 @@
                 </select>
                 <label>Destination</label>
                 <select class="form-control" name="destination" id="destination" ng-model="destination">
-                    <option>Please Select</option>
+                    <option value="">Please Select</option>
                     <option value="MEL">Melbourne</option>
                     <option value="SYD">Sydney</option>
                     <option value="PER">Perth</option>
@@ -64,24 +67,43 @@
                 <label>Return Date</label>
                 <input class="form-control" type="text" id="returndate" />
                 <label>Passengers</label>
-                <input class="form-control" type="text" name="destination" />
+                <input class="form-control" type="text" id="passengers" />
                 <br>
-                <input class="form-control" type="submit" ng-click="searchFlights();" value="Search" />
+                <input class="btn btn-primary" type="submit" ng-click="searchFlights();" style="" value="Search Flights" />
                 
+                <input class="btn btn-primary" type="reset" onClick="clearFields();" style="margin-left:55px;" value="Clear" />
                 <br>
                 
             </div>
             
-            <div class="col-md-8">
-                <div class="row">
-                    <div class="col-md-8">
-                        <h4>Your Results</h4>
-                    </div>
+            <div class="col-md-9">
+                
+                <div class="table-responsive" ng-hide="!flights.length">
                     
+                    <table class="table table-bordered">
+                            <tr>
+                                <th>Flight</th>
+                                <th>From</th>
+                                <th>To</th>
+                                <th>Flight No</th>
+                                <th>Depart Time</th>
+                                <th>Arrival Time</th>
+                                
+                            </tr>
+                            <tr ng-repeat="flight in flights">
+                               <td>{{ flight.company }}</td>
+                               <td>{{ flight.source }}</td>
+                               <td>{{ flight.destination }}</td> 
+                               <td>{{ flight.flightid }}</td>
+                               <td>{{ flight.departtime }}</td>
+                               <td>{{ flight.arrivaltime }}</td>   
+                               
+                            </tr>
+                        
+                    </table>
                     
                 </div>
-                
-                <div id="flight-results" class="row bg-primary" ng-repeat="flight in flights">
+                <!--<div id="flight-results" class="row bg-primary" ng-repeat="flight in flights">
                     <div class="col-sm-5">
                         <label>Flight No: {{flight.flightid}}</label>
                         <p>{{flight.source}} > {{flight.destination}}</p>
@@ -96,12 +118,13 @@
                         
                     </div>
                   
-                </div>
+                </div>-->
+                
                 <div class="alert alert-warning" ng-show="!flights.length">Sorry, no flights available!</div>  
                 
                 
             </div>
-        </div>
+       
         
         
     </div>

@@ -7,8 +7,8 @@
       "arrivaltime": "11.30AM",
       "company": "Jetstar",
       "price": 100,
-      "departdate": "08/15/2015",
-      "returndate": "08/16/2015"
+      "departdate": "09/15/2015",
+      "returndate": "09/16/2015"
     },
     {
       "flightid": "AI-102",
@@ -20,6 +20,17 @@
       "price": 150,
       "departdate": "08/16/2015",
       "returndate": "08/17/2015"
+    },
+    {
+      "flightid": "AI-102",
+      "source": "MEL",
+      "destination": "SYD",
+      "departtime": "12:00AM",
+      "arrivaltime": "1.30PM",
+      "company": "Tiger Air",
+      "price": 120,
+      "departdate": "09/15/2015",
+      "returndate": "09/16/2015"
     }
     
     
