@@ -22,7 +22,7 @@
       "returndate": "08/17/2015"
     },
     {
-      "flightid": "AI-102",
+      "flightid": "AI-103",
       "source": "MEL",
       "destination": "SYD",
       "departtime": "12:00AM",
@@ -31,6 +31,17 @@
       "price": 120,
       "departdate": "09/15/2015",
       "returndate": "09/16/2015"
+    },
+    {
+      "flightid": "AI-105",
+      "source": "PER",
+      "destination": "ADL",
+      "departtime": "12:00AM",
+      "arrivaltime": "1.30PM",
+      "company": "Tiger Air",
+      "price": 130,
+      "departdate": "09/20/2015",
+      "returndate": "09/22/2015"
     }
     
     
